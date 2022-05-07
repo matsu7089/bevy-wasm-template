@@ -1,0 +1,38 @@
+name: build-and-deploy
+on: [push]
+jobs:
+  build-and-deploy:
+    concurrency: ci-${{ github.ref }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: cargo cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: install wasm toolchain
+        run: rustup target install wasm32-unknown-unknown
+
+      - name: install trunk
+        run: cargo install --locked trunk
+
+      - name: build
+        run: trunk build --public-url ${GITHUB_REPOSITORY#*/}
+
+      - name: deploy
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        with:
+          branch: gh-pages
+          folder: dist
+          clean: true
+          git-config-name: github-actions[bot]
+          git-config-email: github-actions[bot]@users.noreply.github.com
