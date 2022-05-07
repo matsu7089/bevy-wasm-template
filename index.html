@@ -1,0 +1,59 @@
+<!DOCTYPE html><html lang="ja"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>bevy-wasm-template</title>
+    <script type="module">import init from '/bevy-wasm-template/bevy-wasm-template-b46c5a73e3c80e44.js';init('/bevy-wasm-template/bevy-wasm-template-b46c5a73e3c80e44_bg.wasm');</script>
+    
+    <style type="text/css">html,
+body {
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+
+canvas {
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  margin: auto;
+}
+</style>
+    <script>window.addEventListener('load', () => {
+  let c, cw, ch, cr, cs
+
+  const resize = () => {
+    const { innerWidth: iw, innerHeight: ih } = window
+
+    if (cw / iw > ch / ih) {
+      cs.width = Math.floor(iw) + 'px'
+      cs.height = Math.floor(iw * cr) + 'px'
+    } else {
+      cs.width = Math.floor(ih / cr) + 'px'
+      cs.height = Math.floor(ih) + 'px'
+    }
+  }
+
+  const observer = new MutationObserver(() => {
+    c = document.querySelector('canvas')
+    if (!c) return
+    cw = c.width
+    ch = c.height
+    cs = c.style
+    cr = ch / cw
+
+    resize()
+    window.addEventListener('resize', resize, false)
+    observer.disconnect()
+  })
+
+  observer.observe(document.body, { childList: true })
+})
+</script>
+  
+<link rel="preload" href="/bevy-wasm-template/bevy-wasm-template-b46c5a73e3c80e44_bg.wasm" as="fetch" type="application/wasm" crossorigin="">
+<link rel="modulepreload" href="/bevy-wasm-template/bevy-wasm-template-b46c5a73e3c80e44.js"></head>
+  <body>
+
+</body></html>
