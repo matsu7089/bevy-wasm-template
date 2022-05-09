@@ -10,6 +10,8 @@ brew install trunk
 
 ```sh
 trunk serve
+# or
+cargo watch -x run -C src
 ```
 
 ## build
