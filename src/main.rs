@@ -8,6 +8,7 @@ fn main() {
         .insert_resource(WindowDescriptor {
             width: SCREEN_WIDTH,
             height: SCREEN_HEIGHT,
+            resizable: false,
             ..default()
         })
         .add_plugins(DefaultPlugins)
