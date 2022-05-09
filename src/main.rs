@@ -1,7 +1,7 @@
 use bevy::prelude::*;
 
-const SCREEN_WIDTH: f32 = 640.0;
-const SCREEN_HEIGHT: f32 = 960.0;
+const SCREEN_WIDTH: f32 = 500.0;
+const SCREEN_HEIGHT: f32 = 500.0;
 
 fn main() {
     App::new()
