@@ -1,6 +1,6 @@
 [build]
-target = "static/index.html"
+target = "web/index.html"
 dist = "dist/"
 
 [watch]
-watch = ["src/", "static/"]
+watch = ["src/", "web/"]
