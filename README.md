@@ -4,6 +4,8 @@
 
 ```sh
 brew install trunk
+# or
+cargo install --locked trunk
 ```
 
 ## dev
