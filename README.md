@@ -1,4 +1,4 @@
-# bevy-wasm-template
+# bevy-web-template
 
 ## install
 

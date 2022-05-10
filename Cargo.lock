@@ -194,7 +194,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "bevy-wasm-template"
+name = "bevy-web-template"
 version = "0.1.0"
 dependencies = [
  "bevy",
