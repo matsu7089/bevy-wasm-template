@@ -9,7 +9,6 @@ jobs:
         uses: actions/checkout@v3
 
       - name: cargo cache
-        id: cargo-cache
         uses: actions/cache@v3
         with:
           path: |
@@ -24,8 +23,7 @@ jobs:
         run: rustup target install wasm32-unknown-unknown
 
       - name: install trunk
-        if: steps.cargo-cache.outputs.cache-hit == false
-        run: cargo install --locked trunk
+        run: wget -O - https://github.com/thedodd/trunk/releases/latest/download/trunk-x86_64-unknown-linux-gnu.tar.gz | tar -xzf -
 
       - name: build
         run: trunk build --public-url ${GITHUB_REPOSITORY#*/}
