@@ -1,6 +1,5 @@
 [build]
 target = "web/index.html"
-release = true
 dist = "dist/"
 
 [watch]
